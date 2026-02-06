@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>💖 you cannot say no pls</title>
+
+<style>
+body {
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Comic Sans MS', Arial, sans-serif;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  overflow: hidden;
+  text-align: center;
+}
+
+h1 {
+  font-size: 3rem;
+  color: white;
+  margin-bottom: 10px;
+}
+
+p {
+  color: white;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+/* PHOTO */
+.photo-container {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.photo-container img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 5px solid white;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+.photo-hearts {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.5rem;
+  animation: floatHearts 2s infinite alternate ease-in-out;
+}
+
+@keyframes floatHearts {
+  from { transform: translateX(-50%) translateY(0); }
+  to { transform: translateX(-50%) translateY(-10px); }
+}
+
+/* BUTTONS */
+.buttons {
+  position: relative;
+  height: 200px;
+  width: 300px;
+}
+
+button {
+  font-size: 1.3rem;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+#yes {
+  background-color: #ff4d6d;
+  color: white;
+}
+
+#no {
+  background-color: white;
+  color: #ff4d6d;
+  position: fixed;
+  left: 50%;
+  top: 65%;
+  transform: translate(-50%, -50%);
+}
+
+/* FLOATING HEARTS */
+.heart {
+  position: fixed;
+  font-size: 1.5rem;
+  animation: floatUp 3s linear forwards;
+}
+
+@keyframes floatUp {
+  to {
+    transform: translateY(-150px);
+    opacity: 0;
+  }
+}
+
+/* CONFETTI */
+@keyframes fall {
+  to {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<h1>Will you be my Valentine,KINJU BABAYYY? 💘</h1>
+<p>Warning: there is a correct answer 😌</p>
+
+<div class="photo-container">
+  <img src="her.jpg" alt="My Valentine">
+  <div class="photo-hearts">💖 💕 💘 💖</div>
+</div>
+
+<div class="buttons">
+  <button id="yes" onclick="yesClicked()">Yes 💕</button>
+  <button id="no">No 🙄</button>
+</div>
+
+<script>
+let noCount = 0;
+let yesScale = 1;
+
+const noTexts = [
+  "No 🙄",
+  "Wait 🤨",
+  "System error ⚠️",
+  "Invalid choice ❌",
+  "Try again 😌",
+  "Resistance detected 😳",
+  "Override imminent 😈"
+];
+
+const messages = [
+  "⚠️ Valentine Protocol Activated",
+  "Analyzing emotions… 💕",
+  "Deploying charm module 😌",
+  "Override almost complete… 😈"
+];
+
+const noBtn = document.getElementById("no");
+const yesBtn = document.getElementById("yes");
+
+function showFakeMessage(text) {
+  const msg = document.createElement("div");
+  msg.innerText = text;
+  msg.style.position = "fixed";
+  msg.style.top = "20px";
+  msg.style.background = "rgba(0,0,0,0.6)";
+  msg.style.color = "white";
+  msg.style.padding = "10px 20px";
+  msg.style.borderRadius = "10px";
+  msg.style.zIndex = "9999";
+  document.body.appendChild(msg);
+  setTimeout(() => msg.remove(), 2000);
+}
+
+function runAway() {
+  const x = Math.random() * (window.innerWidth - 120);
+  const y = Math.random() * (window.innerHeight - 60);
+
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
+
+  if (noCount < noTexts.length - 1) {
+    noCount++;
+    noBtn.innerText = noTexts[noCount];
+  }
+
+  yesScale += 0.15;
+  yesBtn.style.transform = `scale(${yesScale})`;
+
+  if (noCount < messages.length) {
+    showFakeMessage(messages[noCount]);
+  }
+}
+
+noBtn.addEventListener("mouseenter", runAway);
+noBtn.addEventListener("click", runAway);
+noBtn.addEventListener("touchstart", runAway);
+
+function yesClicked() {
+  playSound();
+  launchConfetti();
+
+  document.body.innerHTML = `
+    <h1>💖 IT’S OFFICIAL 💖</h1>
+<img src="us.jpg"
+      style="
+        width:220px;
+        height:220px;
+        border-radius:20px;
+        object-fit:cover;
+        border:5px solid white;
+        box-shadow:0 10px 25px rgba(0,0,0,0.3);
+        margin:20px 0;
+      "
+      alt="Us together">
+    <p style="font-size:1.2rem; max-width:800px;">
+      Kinjal babay jaaan , I know I am very late in asking you this but I couldn’t imagine
+      Valentine’s Day without asking you ik bhaut logo ne aapse poocha hai to be their valentine honestly im gonna kill all of them all of them but now its me asking you and if you are reading this message then you have said YES so yay I love you somuch mera booboo  
+      You make my day liveable I genuinely  wait to hear from you to talk to you I love talking to you I love the way we are with eachother I love how we can talk about anything even when we have not had a great poopoo I love how comfortable we are with eachother ik recently things went a little ..... But babay we are meant for eachother and its you and I against everything in the world  I am super duper proud of you like damn my girl is super talented and the best please she is the best no competition at all....
+      💕  
+      Will you be mine forever and always ?
+    </p>
+  `;
+}
+
+// SOUND
+function playSound() {
+  const audio = new Audio("https://www.myinstants.com/media/sounds/tada-fanfare-a.mp3");
+  audio.play();
+}
+
+// CONFETTI
+function launchConfetti() {
+  for (let i = 0; i < 80; i++) {
+    const confetti = document.createElement("div");
+    confetti.innerText = "🎉";
+    confetti.style.position = "fixed";
+    confetti.style.left = Math.random() * window.innerWidth + "px";
+    confetti.style.top = "-20px";
+    confetti.style.fontSize = "2rem";
+    confetti.style.animation = "fall 3s linear forwards";
+    document.body.appendChild(confetti);
+    setTimeout(() => confetti.remove(), 3000);
+  }
+}
+
+// BACKGROUND HEARTS
+setInterval(() => {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerText = "💖";
+  heart.style.left = Math.random() * window.innerWidth + "px";
+  heart.style.top = window.innerHeight + "px";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 3000);
+}, 900);
+</script>
+
+</body>
+</html>
+
